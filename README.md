@@ -77,7 +77,7 @@ was rejected twice due to high complexity, poor documentation, and
 being of interest only to a limited readership / audience. My attempts
 at selling the program started probably in September, October 1986,
 and the latest letter of rejection arrived in February 1987 (from
-DMV). [Here is the evidence](evidence/dmv-letter-1.jpg))
+DMV). [Here is the evidence.](evidence/dmv-letter-1.jpg)
 
 
 [The documentation](evidence/) I wrote back in the day was a mess - I
