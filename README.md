@@ -69,7 +69,7 @@ either.
 
 ### Publication Attempts 
 
-It never got publish - I made two attempts by sending it to the
+It never got published - I made two attempts by sending it to the
 Editors of ["Happy
 Computer"](https://archive.org/details/happycomputer-magazine), and
 then to the [DMV Verlag](https://www.cpcwiki.eu/index.php/DMV), which
