@@ -18,7 +18,7 @@ that the Wikipedia page can be corrected!**
 This GitHub repo exists to provide evidence for the [claims
 on the Wikipedia page.](https://en.wikipedia.org/wiki/Tablature_editor)
 
-### Tab Composer CPC ("Tabulations Composer")
+## Tab Composer CPC ("Tabulations Composer")
 
 So here is my contender for "The World's First" such program -
 "Tabulations Composer", written in 1986 on my [Amstrad CPC
