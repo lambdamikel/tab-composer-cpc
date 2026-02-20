@@ -23,7 +23,7 @@ on the Wikipedia page.](https://en.wikipedia.org/wiki/Tablature_editor)
 So here is my contender for "The World's First" such program -
 "Tabulations Composer", written in 1986 on my [Amstrad CPC
 464](https://en.wikipedia.org/wiki/Amstrad_CPC_464) in [Locomotive
-BASIC 1.0](https://en.wikipedia.org/wiki/Locomotive_BASIC) Tab I
+BASIC 1.0](https://en.wikipedia.org/wiki/Locomotive_BASIC)  I
 mainly wrote it to help me practice for my guitar lessons.
 
 ![Tab Composer CPC](pics/tab-composer.png)
