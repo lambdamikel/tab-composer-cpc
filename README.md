@@ -1,7 +1,7 @@
 # tab-composer-cpc
 The World's First (?) Tablature Composer Software - written in 1986 on an Amstrad CPC 464 
 
-## Background and purpose of this GitHub repo 
+## Background & Purpose  
 
 Having a keen interest in the history of computer music and music
 composition software, I am researching what officially counts as the
@@ -14,6 +14,9 @@ still lists "Tab Composer CPC" as the first such program (created in
 to have a correct historical account - **so if you should know of any
 earlier Tablature programs that fit the bill, please let me know, so
 that the Wikipedia page can be corrected!**
+
+This GitHub repo exists to provide some evidence for the [claims
+on the Wikipedia page.](https://en.wikipedia.org/wiki/Tablature_editor](https://en.wikipedia.org/wiki/Tablature_editor) 
 
 ### Tab Composer CPC ("Tabulations Composer")
 
