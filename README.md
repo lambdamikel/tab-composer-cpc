@@ -20,34 +20,35 @@ that the Wikipedia page can be corrected!**
 So here is my contender for "The World's First" such program -
 "Tabulations Composer", written in 1986 on my [Amstrad CPC
 464](https://en.wikipedia.org/wiki/Amstrad_CPC_464) in [Locomotive
-BASIC 1.0](https://en.wikipedia.org/wiki/Locomotive_BASIC)
+BASIC 1.0](https://en.wikipedia.org/wiki/Locomotive_BASIC) Tab I
+mainly wrote it to help me practice for my guitar lessons.
 
 ![Tab Composer CPC](pics/tab-composer.png)
 
 The [YT video](https://youtu.be/F6k4eq10DJg) demonstrates how to enter
 a piece of music in Tablature notation using the WYSIWYG graphical
-editor, and also playback using the CPC's 3-voice polyphonic [GI
-AY-3-8912 sound
+editor, and also [music playback.](https://youtu.be/F6k4eq10DJg?t=537)
+Playback uses the CPC's 3-voice polyphonic [GI AY-3-8912 sound
 chip](https://en.wikipedia.org/wiki/General_Instrument_AY-3-8910),
 which was ubiquitous and quite capable for the time.
-
-When I started the project in spring 1986, I didn't even own a disc
-drive, so first versions of this rather large BASIC program were
-developed on a cassette-based system. This definitely required a lot
-of patience.
 
 Here you can find [the Locomotive BASIC program
 sources](src/tabcomp.txt), as well as [a DSK image](cpc/tabcomp.dsk)
 that you can run in [a CPC Emulator.](http://www.winape.net/)
 
 I used this program myself to create the music for my BASIC games back
-in the day, e.g., the 6 highly polyphonic songs in
-https://youtu.be/_FTJe2Av1iw
+in the day, e.g., the [6 highly polyphonic songs in
+"MANIC".](https://youtu.be/_FTJe2Av1iw)
 
-Tab Composer was written in 1986 in Locomotive BASIC, mainly to help
-me practice for my guitar lessons. Music starts here; this is a
-classic easy Bach minuet most guitar players can play:
-https://youtu.be/F6k4eq10DJg?t=537
+### Development & Historical Context
+
+I started the project in spring 1986 and didn't own a disc drive yet,
+so first versions of this rather large BASIC program were developed on
+a purley cassette-based CPC system. This definitely required a lot of
+patience.
+
+I worked on this program for months, and transcribed [dozens of songs
+from my guitar tab](https://youtu.be/_FTJe2Av1iw) book with it.
 
 Guitar tablature creator software became available much later on the
 PC AFAIK, and I had no inspiration for this program. I might have seen
@@ -58,8 +59,7 @@ time. There were other CPC music composition programs available
 though, some as early as 1985 when the CPC 464 was released, but they
 used standard sheet music notation.
 
-I worked on this program for months, and transcribed [dozens of songs
-from my guitar tab](https://youtu.be/_FTJe2Av1iw) book with it.
+### Publication Attempts 
 
 It never got publish - I made two attempts by sending it to the
 Editors of ()"Happy
@@ -73,6 +73,19 @@ being of interest only to a limited readership / audience. My attempts
 at selling the program started probably in September, October 1986,
 and the latest letter of rejection arrived in February 1987 (from
 DMV). [Here is the evidence](evidence/dmv-letter-1.jpg))
+
+
+[The documentation](evidence/) I wrote back in the day was a mess - I
+didn't own a printer yet, and my handwriting was poor, so from that
+point of view, it is not surprising that the program got rejected.
+
+I [succeeded in selling / publishing other type-in programs for both
+the CPC and later the Amiga
+though](https://www.michael-wessel.info/anniversary.html) and
+eventually made enough money so that I could afford the CPC disk drive
+as well as an Amiga 500 with 1084 monitor back in the day.
+
+### Reflections 
 
 Even 35 years later, this is still a usable piece of software, and you
 can see that entering a piece of Tab music doesn't take long! With a
@@ -91,17 +104,9 @@ manaveour the cursor back / to the left.  Definitely not very
 convenient - I'd implement that differently today. However, note
 correction is rarely needed anyway.
 
-[The documentation](evidence/) I wrote back in the day was a mess - I
-didn't own a printer yet, and my handwriting was poor, so from that
-point of view, it is not surprising that the program got rejected.
-
-I [succeeded in selling / publishing other type-in programs for both
-the CPC and later the Amiga
-though](https://www.michael-wessel.info/anniversary.html) and
-eventually made enough money so that I could afford the CPC disk drive
-as well as an Amiga 500 with 1084 monitor back in the day.
-
-
 ### The Evidence
 
-Here, in [the `evidence/` folder.](evidence/)
+My letter including the hand-written program documentation to, and
+response from, the ["DMV
+Verlag"](https://www.cpcwiki.eu/index.php/DMV) is presented in [the
+`evidence/` folder.](evidence/)
