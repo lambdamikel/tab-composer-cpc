@@ -28,8 +28,8 @@ The [YT video](https://youtu.be/F6k4eq10DJg) demonstrates how to enter
 a piece of music in Tablature notation using the WYSIWYG graphical
 editor, and also playback using the CPC's 3-voice polyphonic [GI
 AY-3-8912 sound
-chip](https://en.wikipedia.org/wiki/General_Instrument_AY-3-8910)
-sound chip, which was ubiquitous and quite capable for the time.
+chip](https://en.wikipedia.org/wiki/General_Instrument_AY-3-8910),
+which was ubiquitous and quite capable for the time.
 
 When I started the project in spring 1986, I didn't even own a disc
 drive, so first versions of this rather large BASIC program were
