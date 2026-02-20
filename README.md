@@ -15,8 +15,8 @@ to have a correct historical account - **so if you should know of any
 earlier Tablature programs that fit the bill, please let me know, so
 that the Wikipedia page can be corrected!**
 
-This GitHub repo exists to provide some evidence for the [claims
-on the Wikipedia page.](https://en.wikipedia.org/wiki/Tablature_editor](https://en.wikipedia.org/wiki/Tablature_editor) 
+This GitHub repo exists to provide evidence for the [claims
+on the Wikipedia page.](https://en.wikipedia.org/wiki/Tablature_editor)
 
 ### Tab Composer CPC ("Tabulations Composer")
 
