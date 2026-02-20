@@ -70,15 +70,15 @@ either.
 ### Publication Attempts 
 
 It never got published - I made two attempts by sending it to the
-Editors of ["Happy
+editors of ["Happy
 Computer"](https://archive.org/details/happycomputer-magazine), and
 then to the [DMV Verlag](https://www.cpcwiki.eu/index.php/DMV), which
 was the publisher of the permier CPC magazine in Germany back in the
 day, ["Schneider CPC
 International"](https://archive.org/search?query=subject%3A%22Schneider%2FAmstrad+CPC%2FPC+International%22). It
 was rejected twice due to high complexity, poor documentation, and
-being of interest only to a limited readership / audience. My attempts
-at selling the program started probably in September, October 1986,
+being of interest to a limited readership / audience only. My publishing 
+attempts probably started in September 1986,
 and the latest letter of rejection arrived in February 1987 (from
 DMV). [Here is the evidence.](evidence/dmv-letter-1.jpg)
 
