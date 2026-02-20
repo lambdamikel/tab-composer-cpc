@@ -73,7 +73,7 @@ It never got published - I made two attempts by sending it to the
 editors of ["Happy
 Computer"](https://archive.org/details/happycomputer-magazine), and
 then to the [DMV Verlag](https://www.cpcwiki.eu/index.php/DMV), which
-was the publisher of the permier CPC magazine in Germany back in the
+was the publisher of the premier CPC magazine in Germany back in the
 day, ["Schneider CPC
 International"](https://archive.org/search?query=subject%3A%22Schneider%2FAmstrad+CPC%2FPC+International%22). It
 was rejected twice due to high complexity, poor documentation, and
