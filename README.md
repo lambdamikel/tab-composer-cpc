@@ -18,12 +18,18 @@ that the Wikipedia page can be corrected!**
 ### Tab Composer CPC ("Tabulations Composer")
 
 So here is my contender for "The World's First" such program -
-"Tab-Comp CPC", written in 1986 on my Amstrad CPC 464 in Locomotive
-BASIC.
+"Tabulations Composer", written in 1986 on my [Amstrad CPC
+464](https://en.wikipedia.org/wiki/Amstrad_CPC_464) in [Locomotive
+BASIC 1.0](https://en.wikipedia.org/wiki/Locomotive_BASIC)
 
 ![Tab Composer CPC](pics/tab-composer.png)
 
-A [YT demo video is online.](https://youtu.be/F6k4eq10DJg) 
+The [YT video](https://youtu.be/F6k4eq10DJg) demonstrates how to enter
+a piece of music in Tablature notation using the WYSIWYG graphical
+editor, and also playback using the CPC's 3-voice polyphonic [GI
+AY-3-8912 sound
+chip](https://en.wikipedia.org/wiki/General_Instrument_AY-3-8910)
+sound chip, which was ubiquitous and quite capable for the time.
 
 When I started the project in spring 1986, I didn't even own a disc
 drive, so first versions of this rather large BASIC program were
@@ -52,9 +58,11 @@ time. There were other CPC music composition programs available
 though, some as early as 1985 when the CPC 464 was released, but they
 used standard sheet music notation.
 
-I worked for months on this program, and transcribed dozends of songs
-from my Guitar Tab book with it. It never got publish - I made two
-attempts by sending it to the Editors of ()"Happy
+I worked on this program for months, and transcribed [dozens of songs
+from my guitar tab](https://youtu.be/_FTJe2Av1iw) book with it.
+
+It never got publish - I made two attempts by sending it to the
+Editors of ()"Happy
 Computer")[https://archive.org/details/happycomputer-magazine?sort=-date],
 and then to the [DMV Verlag](https://www.cpcwiki.eu/index.php/DMV),
 which was the publisher of the permier CPC magazine in Germany back in
