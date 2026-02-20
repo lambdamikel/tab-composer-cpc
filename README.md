@@ -85,7 +85,7 @@ DMV). [Here is the evidence.](evidence/dmv-letter-1.jpg)
 
 [The documentation](evidence/) I wrote back in the day was a mess - I
 didn't own a printer yet, and my handwriting was poor, so from that
-point of view, it is not surprising that the program got rejected.
+point of view it is not surprising that the program got rejected.
 
 I [succeeded in selling / publishing other type-in programs for both
 the CPC and later the Amiga
