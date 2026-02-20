@@ -52,12 +52,14 @@ from my guitar tab](https://youtu.be/_FTJe2Av1iw) book with it.
 
 Guitar tablature creator software became available much later on the
 PC AFAIK, and I had no inspiration for this program. I might have seen
-Chris Hülsbeck's 1986 "Sound Monitor 1.0" for the C64, which is
+Chris Hülsbeck's 1986 "Sound Monitor 1.0" on the C64, which is
 considered the first Sound Tracker ever, but no Sound Tracker or
 something remotely similar was available for the CPC at that
-time. There were other CPC music composition programs available
-though, some as early as 1985 when the CPC 464 was released, but they
-used standard sheet music notation.
+time. There were [other CPC music composition
+programs](http://tacgr.emuunlim.com/interviews/daverogers.html)
+available though (e.g., "The Music System" by Rainbird), some as early
+as 1985 when the CPC 464 was released. However, these used standard
+sheet music notation, not Tablature.
 
 ### Publication Attempts 
 
