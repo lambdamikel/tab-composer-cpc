@@ -32,7 +32,7 @@ that the Wikipedia page can be corrected!**
 This GitHub repo exists to provide evidence for the [claims
 on the Wikipedia page.](https://en.wikipedia.org/wiki/Tablature_editor)
 
-### Tab Composer CPC ("Tabulations Composer")
+## Tab Composer CPC ("Tabulations Composer")
 
 So here is my contender for "The World's First" such program -
 "Tabulations Composer", written in 1986 on my [Amstrad CPC
@@ -83,23 +83,23 @@ either.
 
 ### Publication Attempts 
 
-It never got publish - I made two attempts by sending it to the
-Editors of ["Happy
+It never got published - I made two attempts by sending it to the
+editors of ["Happy
 Computer"](https://archive.org/details/happycomputer-magazine), and
 then to the [DMV Verlag](https://www.cpcwiki.eu/index.php/DMV), which
-was the publisher of the permier CPC magazine in Germany back in the
+was the publisher of the premier CPC magazine in Germany back in the
 day, ["Schneider CPC
 International"](https://archive.org/search?query=subject%3A%22Schneider%2FAmstrad+CPC%2FPC+International%22). It
 was rejected twice due to high complexity, poor documentation, and
-being of interest only to a limited readership / audience. My attempts
-at selling the program started probably in September, October 1986,
+being of interest to a limited readership / audience only. My publishing 
+attempts probably started in September 1986,
 and the latest letter of rejection arrived in February 1987 (from
 DMV). [Here is the evidence.](evidence/dmv-letter-1.jpg)
 
 
 [The documentation](evidence/) I wrote back in the day was a mess - I
 didn't own a printer yet, and my handwriting was poor, so from that
-point of view, it is not surprising that the program got rejected.
+point of view it is not surprising that the program got rejected.
 
 I [succeeded in selling / publishing other type-in programs for both
 the CPC and later the Amiga
