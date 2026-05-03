@@ -1,6 +1,20 @@
 # tab-composer-cpc
 The World's First (?) Tablature Composer Software - written in 1986 on an Amstrad CPC 464 
 
+## News / Update 
+
+I have restored many of the **old songs** I made with Tab Composer CPC in ~1986 from 40 year old cassette tapes! Check out [the YouTube video for the details.](https://youtu.be/yU8MmQVJ87o)
+
+There is now a [DSK image for CPC emulators with the restored songs and special version of Tab Composer CPC that can play back these older songs.](cpc/SONGS-TCX.dsk) Note that the songs were originally created with an ealier version of Tab Composer CPC, before I owned a DD1 disk drive, and there are using a different data format, and this version is also on the disk: `tabcomp1.bas`. However, this version has the drawback that it does allow load and playback, but not edit / visualization of the loaded data, unlike [the latest "official" version of `tabcomp.bas`](cpc/tabcomp.dsk)
+Hence, I have extended `tabcomp.bas` so that it can load the old song data. I have hence added a data conversion routine to the loader - this version is on [the song disk](cpc/SONGS-TCX.dsk) under the name `tabcompx.bas` (`x` for conversation). So please use this version to load the songs. You will then also be able to edit and see the tablature data, not only play it back (as in `tabcomp1.bas`). 
+
+To use `tabcompx.bas` for loading a song and to play it back, use the `l` key to load a song. Just enter the filename *without extension.* You can see all the songs on the disk via the cataloge function: `c`. To play back a song, use `p` and answer the questions ("Geschwindigkeit" = "Speed", use 50, 100, ..., depending on the song; the other input prompts should be understandable for English speakers). You can always get the help page with the `h` key. 
+
+Note that loading one of the restored casette songs with `tabcompx.bas` takes much longer than with [the "official" Tablature Composer on the tabcomp.dsk image](cpc/tabcomp.dsk), due to the required data conversation. 
+
+Moreover, I also retrieved [the very first *Version 0 of Tab Composer CPC*](cpc/TABCOMP0.dsk) from tape! It is very primitive, so don't use it for anything - it is archived here for the sake of completeness and "just for fun". 
+
+
 ## Background & Purpose  
 
 Having a keen interest in the history of computer music and music
