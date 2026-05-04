@@ -34,7 +34,7 @@ that the Wikipedia page can be corrected!**
 This GitHub repo exists to provide evidence for the [claims
 on the Wikipedia page.](https://en.wikipedia.org/wiki/Tablature_editor)
 
-![alt text](wikipedia-2026-05-04.png)
+![Wikipedia Page 2026-05-04 with Tab Comp CPC Entry](pics/wikipedia-2026-05-04.png)
 
 ## Tab Composer CPC ("Tabulations Composer")
 
@@ -128,8 +128,8 @@ very first version [`tabcomp0.bas`](cpc/TABCOMP0.dsk) looks compared to the fina
 the intermediate version [`tabcomp1.bas`](cpc/SONGS-TCX.dsk) that did not 
 allow to continue editing of the tablature after loading it back from tape. 
 
- Correcting false notes is not very
-convenient - but the idea was that "content" needed to be protected
+Correcting false notes is not very
+convenient - the idea was that "content" should be protected 
 from accidental deletions. A single left arrow key hence only deletes
 the note immediately left to it, and does not go back further,
 potentially deleting more stuff by accident (there was no
