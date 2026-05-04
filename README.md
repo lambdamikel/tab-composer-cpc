@@ -5,16 +5,16 @@ The World's First (?) Tablature Composer Software - written in 1986 on an Amstra
 
 ### 5-3-2026 
 
-I have restored many of the **old songs** I made with Tab Composer CPC in ~1986 from 40 year old cassette tapes! Check out [the YouTube video for the details.](https://youtu.be/yU8MmQVJ87o)
+I have restored many of the **old songs** I made with Tab Composer CPC back in ~1986 from 40 year old cassette tapes! Check out [the YouTube video for the details.](https://youtu.be/yU8MmQVJ87o)
 
-There is now a [DSK image for CPC emulators with the restored songs and special version of Tab Composer CPC that can play back these older songs.](cpc/SONGS-TCX.dsk) Note that the songs were originally created with an ealier version of Tab Composer CPC, before I owned a DD1 disk drive, and there are using a different data format, and this version is also on the disk: `tabcomp1.bas`. However, this version has the drawback that it does allow load and playback, but not edit / visualization of the loaded data, unlike [the latest "official" version of `tabcomp.bas`](cpc/tabcomp.dsk)
-Hence, I have extended `tabcomp.bas` so that it can load the old song data. I have hence added a data conversion routine to the loader - this version is on [the song disk](cpc/SONGS-TCX.dsk) under the name `tabcompx.bas` (`x` for conversion). So please use this version to load the songs. You will then also be able to edit and see the tablature data, not only play it back (as in `tabcomp1.bas`). 
+There is now a [DSK image for CPC emulators with the restored songs and a special version of Tab Composer CPC that can play back these older songs.](cpc/SONGS-TCX.dsk) Note that the songs were originally created with an ealier version of Tab Composer CPC, before I owned a DD1 disk drive. This older version (`tabcomp1.bas`) used a different data format and also  had the drawback of not allowing round trip editing of the songs once saved. This shortcoming was fixed in [the latest "official" version of `tabcomp.bas`](cpc/tabcomp.dsk). But most of the songs I had already created with the earlier version (`tablcomp1.bas`) - to read these back with the latest more capable version I hence added a data conversion routine to the song loader. This version is on [the song disk](cpc/SONGS-TCX.dsk): `tabcompx.bas` (`x` for conversion). So please use this version to load the songs included on the disk and not `tabcomp1.bas`. 
 
-To use `tabcompx.bas` for loading a song and to play it back, use the `l` key to load a song. Just enter the filename *without extension.* You can see all the songs on the disk via the cataloge function: `c`. To play back a song, use `p` and answer the questions ("Geschwindigkeit" = "Speed", use 50, 100, ..., depending on the song; the other input prompts should be understandable for English speakers). You can always get the help page with the `h` key. 
+To use `tabcompx.bas` for loading a song and play it back, first use the `l` key to load the song. Just enter the filename *without the .mus extension.* You can see all the songs on disk with the cataloge function: `c`. To play back a song, use `p` and answer the questions ("Geschwindigkeit" = "Speed", use 50, 100, ..., depending on the song; the other input prompts should be understandable for English speakers). You can always get the help page with the `h` key. 
 
-Note that loading one of the restored casette songs with `tabcompx.bas` takes much longer than with [the "official" Tablature Composer on the tabcomp.dsk image](cpc/tabcomp.dsk), due to the required data conversion. 
+Note that loading songs with `tabcompx.bas` takes a bit longer than with `tabcomp1.bas` or  [the "official" Tablature Composer on the tabcomp.dsk image](cpc/tabcomp.dsk), due to the required data conversion. 
 
-Moreover, I also retrieved [the very first *Version 0 of Tab Composer CPC*](cpc/TABCOMP0.dsk) from tape! It is very primitive, so don't use it for anything - it is archived here for the sake of completeness and "just for fun". 
+Moreover, I also retrieved [the very first *Version 0 of Tab Composer CPC*](cpc/TABCOMP0.dsk) from tape! This is a very primitive "first sketch of an idea" prototype version, so don't use it for anything - it is archived here for the sake of completeness and "just for fun". A few songs are also included for it on the disk - you can use the `6` on the number
+pad, hit `SPACE`, enter song name (e.g., `wilsons's`), hit `j` for `LIED SPIELEN?`, use 50 for playback speed, etc. Enjoy! 
 
 
 ## Background & Purpose  
@@ -34,18 +34,20 @@ that the Wikipedia page can be corrected!**
 This GitHub repo exists to provide evidence for the [claims
 on the Wikipedia page.](https://en.wikipedia.org/wiki/Tablature_editor)
 
+![alt text](wikipedia-2026-05-04.png)
+
 ## Tab Composer CPC ("Tabulations Composer")
 
 So here is my contender for "The World's First" such program -
 "Tabulations Composer", written in 1986 on my [Amstrad CPC
 464](https://en.wikipedia.org/wiki/Amstrad_CPC_464) in [Locomotive
-BASIC 1.0](https://en.wikipedia.org/wiki/Locomotive_BASIC)  I
+BASIC 1.0](https://en.wikipedia.org/wiki/Locomotive_BASIC).  I
 mainly wrote it to help me practice for my guitar lessons.
 
 ![Tab Composer CPC](pics/tab-composer.png)
 
 The [YT video](https://youtu.be/F6k4eq10DJg) demonstrates how to enter
-a piece of music in Tablature notation using the WYSIWYG graphical
+a piece of music in tablature notation using the WYSIWYG graphical
 editor, and also [music playback.](https://youtu.be/F6k4eq10DJg?t=537)
 Playback uses the CPC's 3-voice polyphonic [GI AY-3-8912 sound
 chip](https://en.wikipedia.org/wiki/General_Instrument_AY-3-8910),
@@ -68,6 +70,8 @@ patience.
 
 I worked on this program for months, and transcribed [dozens of songs
 from my guitar tab](https://youtu.be/_FTJe2Av1iw) book with it.
+
+In May 2026, I have restored many of the **old songs** I made with Tab Composer CPC back in ~1986 from 40 year old cassette tapes! Check out [the YouTube video for the details.](https://youtu.be/yU8MmQVJ87o) As a results of these efforts, there is now a [DSK image for CPC emulators with the restored songs and an included special version of Tab Composer CPC (`tabcompx.bas`)](cpc/SONGS-TCX.dsk) that can play load these older songs doing some data conversion. 
 
 Guitar tablature creator software became available much later on the
 PC AFAIK, and I had no inspiration for this program. I might have seen
@@ -111,14 +115,20 @@ as well as an Amiga 500 with 1084 monitor back in the day.
 
 ### Reflections 
 
-Even 35 years later, this is still a usable piece of software, and you
+Even 40 years later, this is still a usable piece of software, and you
 can see that entering a piece of Tab music doesn't take long! With a
 bit of practice, as you can see in [the
 video,](https://youtu.be/F6k4eq10DJg) it only takes about 5 minutes
-for the first part of the Bach Minuet shown.
+for the first part of the demonstrated Bach Minuet. 
 
 I definitely paid some attention to usability aspects as well and went
-through a number of iterations. Correcting false notes is not very
+through a number of iterations - you can see how different and primitive the
+very first version [`tabcomp0.bas`](cpc/TABCOMP0.dsk) looks compared to the final 
+"product" [`tabcomp.bas`](cpc/tabcomp.dsk), and
+the intermediate version [`tabcomp1.bas`](cpc/SONGS-TCX.dsk) that did not 
+allow to continue editing of the tablature after loading it back from tape. 
+
+ Correcting false notes is not very
 convenient - but the idea was that "content" needed to be protected
 from accidental deletions. A single left arrow key hence only deletes
 the note immediately left to it, and does not go back further,
