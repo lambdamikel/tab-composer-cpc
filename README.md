@@ -1,8 +1,7 @@
 # tab-composer-cpc
 The World's First (?) Tablature Composer Software - written in 1986 on an Amstrad CPC 464 
 
-## Latest News / Updates 
-
+## Latest News
 ### 5-3-2026 
 
 I have restored many of the **old songs** I made with Tab Composer CPC back in ~1986 from 40 year old cassette tapes! Check out [the YouTube video for the details.](https://youtu.be/yU8MmQVJ87o)
