@@ -7,7 +7,7 @@ The World's First (?) Tablature Composer Software - written in 1986 on an Amstra
 
 I have restored many of the **old songs** I made with Tab Composer CPC back in ~1986 from 40 year old cassette tapes! Check out [the YouTube video for the details.](https://youtu.be/yU8MmQVJ87o)
 
-There is now a [DSK image for CPC emulators with the restored songs and a special version of Tab Composer CPC that can play back these older songs.](cpc/SONGS-TCX.dsk) Note that the songs were originally created with an ealier version of Tab Composer CPC, before I owned a DD1 disk drive. This older version (`tabcomp1.bas`) used a different data format and also  had the drawback of not allowing round trip editing of the songs once saved. This shortcoming was fixed in [the latest "official" version of `tabcomp.bas`](cpc/tabcomp.dsk). But most of the songs I had already created with the earlier version (`tablcomp1.bas`) - to read these back with the latest more capable version I hence added a data conversion routine to the song loader. This version is on [the song disk](cpc/SONGS-TCX.dsk): `tabcompx.bas` (`x` for conversion). So please use this version to load the songs included on the disk and not `tabcomp1.bas`. 
+There is now a [DSK image for CPC emulators with the restored songs and a special version of Tab Composer CPC that can play back these older songs.](cpc/SONGS-TCX.dsk) Note that the songs were originally created with an earlier version of Tab Composer CPC, before I owned a DD1 disk drive. This older version (`tabcomp1.bas`) used a different data format and also  had the drawback of not allowing round trip editing of the songs once saved. This shortcoming was fixed in [the latest "official" version of `tabcomp.bas`](cpc/tabcomp.dsk). But most of the songs I had already created with the earlier version (`tablcomp1.bas`) - to read these back with the latest more capable version I hence added a data conversion routine to the song loader. This version is on [the song disk](cpc/SONGS-TCX.dsk): `tabcompx.bas` (`x` for conversion). So please use this version to load the songs included on the disk and not `tabcomp1.bas`. 
 
 To use `tabcompx.bas` for loading a song and play it back, first use the `l` key to load the song. Just enter the filename *without the .mus extension.* You can see all the songs on disk with the cataloge function: `c`. To play back a song, use `p` and answer the questions ("Geschwindigkeit" = "Speed", use 50, 100, ..., depending on the song; the other input prompts should be understandable for English speakers). You can always get the help page with the `h` key. 
 
@@ -134,7 +134,7 @@ from accidental deletions. A single left arrow key hence only deletes
 the note immediately left to it, and does not go back further,
 potentially deleting more stuff by accident (there was no
 UNDO). Hence, the special "correction string" at the top was used to
-manaveour the cursor back / to the left.  Definitely not very
+manoeuvre the cursor back / to the left.  Definitely not very
 convenient - I'd implement that differently today. However, note
 correction is rarely needed anyway.
 
