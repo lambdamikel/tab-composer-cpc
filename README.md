@@ -153,13 +153,79 @@ handwriting. Two things in it are worth pointing out:
 - **DMV's reply is dated 16 February 1987** and is signed by the editor in
   chief of *Schneider CPC International* - a dated, third party record that the
   program existed and had been submitted by then.
-- My covering letter offers them "die **überarbeitete** Version des
+- My covering letter offers them "die **Ã¼berarbeitete** Version des
   Tabulations-Composers" - the *revised* version, so an earlier one already
-  existed - and is signed "Michael Wessel, Schüler, 16 J."
+  existed - and is signed "Michael Wessel, SchÃ¼ler, 16 J."
 
 The key list and the variable list in those pages match the program's own help
 page and variable declarations, which is a further check that the letters and
 the surviving code are the same program.
+
+### An Independent Check of the "First Tablature Composer" Claim
+
+Since this repository exists to support a claim on Wikipedia, I asked
+[Claude](https://claude.com/claude-code) (Anthropic) to look for evidence
+**against** it as well as for it, and to give its own verdict. The method is
+written out below so that anyone can repeat it.
+
+**What was searched.**
+
+- The **complete archived run of *Schneider CPC International***, the magazine
+  this program was submitted to: twenty monthly issues from March 1985 to
+  October 1986 plus two Sonderhefte, downloaded from the Internet Archive and
+  searched in full text.
+- The release dates of the tablature editors that are usually named as the
+  early ones.
+- Guitar and music software for other home computers of the period, and
+  academic work on computer tablature.
+- The provenance of the sources that currently repeat the claim.
+
+**What was found.**
+
+- In those twenty months of *Schneider CPC International*, the word "Gitarre"
+  **does not occur once**, in any spelling, and neither does "Tabulatur". The
+  only near misses are "Tabulator", meaning a tab stop in a word processor, and
+  two mentions of "Musiknoten", one of them a game. The OCR is sound: "Musik",
+  "Programm", "Listing" and "Sound" all appear in all twenty-two issues. Guitar
+  was simply not a subject in that magazine.
+- Every tablature editor with a documented date is later, and not by a little:
+  Wayne Cripps' lute `tab` is copyright **1991**, TablEdit's own release history
+  gives **1997** for its first version, Guitar Pro is **1997**.
+- Guitar software of the mid eighties on other machines was tuners and chord
+  dictionaries - type in a chord name, see it on a fretboard - rather than
+  anything you could compose with. Tablature shared on bulletin boards was
+  plain text, not software.
+- One genuine rival exists: a project at the University of Ottawa on the
+  automated translation of 16th century lute tablatures, running **1985 to
+  1990**, which built "a special tablature editor" for German, French and
+  Italian lute tablature. It is a data entry tool feeding a transcription
+  pipeline - no composition, no playback - and it is not dated more precisely
+  than that five year window.
+- **The online agreement is circular.** Every source that currently states
+  "the first tablature program was written for the Amstrad CPC 464 in 1986"
+  traces back to the Wikipedia entry this repository supports. It should not be
+  cited as independent corroboration, and is not treated as such here.
+
+**The verdict, as calibrated as it can honestly be.**
+
+- **"The first tablature *composer*"** - a program for writing tablature
+  interactively, with playback - **survives a deliberate attempt to refute it.**
+  Nothing earlier was found, and nothing close.
+- **"The first tablature *editor*"**, read broadly, is the weaker claim. The
+  Ottawa lute editor may well be contemporaneous, and an editor for entering
+  historical tablature is an editor. The narrower wording is the defensible one.
+- This is **unrefuted, not independently corroborated**. Magazine type-in
+  listings from 1983 to 1986 are badly indexed and largely invisible to
+  searching, and that is exactly where a rival would hide. A single dated
+  listing in some 1985 magazine would settle it the other way.
+
+The strongest evidence remains the correspondence in
+[`evidence/`](evidence/), [transcribed and translated
+here](evidence/TRANSCRIPTION.md): a letter from the editor in chief of
+*Schneider CPC International* **dated 16 February 1987**, replying to a
+submission whose covering letter offers the *revised* version of the program.
+That does not prove "first" - nothing can - but it does date the program
+through a third party, which is what the claim needs most.
 
 ### Reading the Programs on the Disk Images
 
