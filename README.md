@@ -145,6 +145,22 @@ response from, the ["DMV
 Verlag"](https://www.cpcwiki.eu/index.php/DMV) is presented in [the
 `evidence/` folder.](evidence/)
 
+The handwriting is now transcribed and translated in
+[`evidence/TRANSCRIPTION.md`](evidence/TRANSCRIPTION.md), German first and
+English after, so the documentation can be read without deciphering 1987
+handwriting. Two things in it are worth pointing out:
+
+- **DMV's reply is dated 16 February 1987** and is signed by the editor in
+  chief of *Schneider CPC International* - a dated, third party record that the
+  program existed and had been submitted by then.
+- My covering letter offers them "die **überarbeitete** Version des
+  Tabulations-Composers" - the *revised* version, so an earlier one already
+  existed - and is signed "Michael Wessel, Schüler, 16 J."
+
+The key list and the variable list in those pages match the program's own help
+page and variable declarations, which is a further check that the letters and
+the surviving code are the same program.
+
 ### Reading the Programs on the Disk Images
 
 The BASIC programs on the disk images are stored tokenised, which is how
