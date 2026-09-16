@@ -163,3 +163,13 @@ and the variable type suffixes, which are implied by `DEFINT a-y` rather
 than stored. It was checked by detokenising `TAB-COMP.BAS` and comparing
 it against [`src/tabcomp.txt`](src/tabcomp.txt), the listing transcribed
 from the original: all 444 lines come back identical.
+
+The listings it produces are in [`src/`](src/), so the programs can simply
+be read here:
+
+| Listing | Program |
+| --- | --- |
+| [`src/tabcomp0.txt`](src/tabcomp0.txt) | the 1986 prototype, Version 0 - one array per string (`e`, `a`, `d`, `g`, `h`, `he`) |
+| [`src/tabcomp1.txt`](src/tabcomp1.txt) | the first real version, which stored the AY sound period per note and so could not be edited again after saving |
+| [`src/tabcomp.txt`](src/tabcomp.txt) | the finished version: notes are stored as the tablature position itself, which is what made round trip editing work |
+| [`src/tabcompx.txt`](src/tabcompx.txt) | the same, plus the routine that converts the old period based songs into the new format |

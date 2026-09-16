@@ -1,0 +1,278 @@
+10 CALL &BC02:MODE 0:PEN 15:PRINT"** Bitte   Warten **"
+20 ENV 1,2,6,1,1,3,5,0,-1,10,5,-1,30,1,0,200
+30 ENV 2,1,15,1,15,-1,5
+40 ENV 3,5,3,1,1,0,10,15,-1,3
+50 ENV 4,1,15,1
+60 ENV 5,1,15,1,15,-1,20
+70 ENV 6,15,1,1,15,-1,20
+80 ENV 7,1,15,1,1,0,20,1,-15,1
+90 ENV 8,1,15,1,1,0,5,1,-15,1
+96 ON ERROR GOTO 1880
+100 ENV 9,1,15,1,15,-1,1,1,15,1,15,-1,1
+110 OPENOUT"DUMMY":MEMORY HIMEM-1:CLOSEOUT 
+130 artnote=8
+140 y=5:x=3
+150 kan$="A"
+160 notencontrolle=1
+170 DIM alt(1,3)
+175 DEFINT l
+177 DEFINT n
+180 DIM laenge(700,3)    
+190 DIM note(700,3):DIM takt(10):DIM taktb(10)
+200 DIM e(12)
+210 DIM a(12)
+220 DIM d(12)
+230 DIM g(12)
+240 DIM h(12)
+250 DIM he(12)
+260 notenzeiger=2
+270 FOR i=0 TO 12
+280 READ e,a,d,g,h,he
+290 e(i)=e
+300 a(i)=a
+310 d(i)=d
+320 g(i)=g
+330 h(i)=h
+340 he(i)=he
+350 NEXT
+360 DATA 758,568,426,319,253,190
+370 DATA 716,536,402,301,239,179
+380 DATA 676,506,379,284,225,169
+390 DATA 638,478,358,268,213,159
+400 DATA 602,451,338,253,201,150
+410 DATA 568,426,319,239,190,142
+420 DATA 536,402,301,225,179,134
+430 DATA 506,379,284,213,169,127  
+440 DATA 478,358,268,201,159,119
+450 DATA 451,338,253,190,150,113
+460 DATA 426,319,239,179,142,106
+470 DATA 402,301,225,169,134,100
+480 DATA 379,284,213,159,127,95
+490 MODE 2
+500 INK 0,0:BORDER 0:INK 1,24:PEN 1
+510 WINDOW #2,1,1,5,15:WINDOW #3,1,80,3,3
+520 CLS#2:PRINT#2,"EHGDAE"
+530 LOCATE 24,1:PRINT"Tabulations Composer 1986 bei Michael Wessel"
+540 LOCATE 1,14:FOR S=1 TO 960:PRINT CHR$(233);:NEXT
+550 LOCATE 2,15:PRINT" .......FREIE KANAELE......":LOCATE 2,16:PRINT"........MOMENTANE STELLE...":LOCATE 2,17:PRINT" .......KANAL NUMMER.......":LOCATE 3,18:PRINT".......NOTENBLATTNUMMER...":LOCATE 3,19:PRINT".......NOTENWERT.........."
+560 LOCATE 2,21:PRINT"........NOTENSTELLE........"
+570 LOCATE 2,22:PRINT" .........................."
+580 LOCATE 2,23:PRINT"........STELLE IM TAKT....."
+590 'Taktstriche 
+600 cd=7
+610 FOR s=16 TO 534 STEP 16 
+620 cd=cd+1 
+630 MOVE s,330:DRAW s,250,1:IF cd=8 THEN MOVE s+1,330:DRAW s+1,250,1:cd=0
+640 NEXT
+650 'Saiten zeichnen
+660 FOR s=330 TO 250 STEP -16 
+670 MOVE 16,s:DRAW 528,s:NEXT 
+680 GOSUB 700:GOTO 750
+690 'Status-Informationen
+700 LOCATE 3,15:PRINT "...":LOCATE 3,15:PRINT c$:LOCATE 2,16:PRINT notenzeiger-1:LOCATE 3,17:PRINT kan$:LOCATE 2,18:PRINT blatt:LOCATE 2,19:PRINT wert:LOCATE 2,20:PRINT y-4;:IF y=4 THEN PRINT".....KOREKTURSAITE......" ELSE PRINT".....GITARRENSAITE......"
+710 LOCATE 2,21:PRINT x-2
+720 LOCATE 10,22:IF artnote=8 THEN PRINT"GANZE NOTEN..." ELSE IF artnote=4 THEN PRINT"HALBE NOTEN..." ELSE IF artnote=2 THEN PRINT"VIERTEL NOTEN" ELSE IF artnote=1 THEN PRINT"ACHTEL NOTEN.."
+730 LOCATE 2,23:PRINT notencontrolle
+740 RETURN
+750 'Hauptprogramm
+760 IF PEEK(0)=255 THEN 1830 
+770 'Tastaturabfrage
+780 a$=INKEY$:IF a$="" THEN 780 
+790 a$=UPPER$(a$)
+800 c$="":IF notenzeiger>kanalacontrolle THEN kanala=0:c$=c$+"A"
+810 IF notenzeiger>kanalbcontrolle THEN kanalb=0:c$=c$+"B"
+820 IF notenzeiger>kanalccontrolle THEN kanalc=0:c$=c$+"C"
+830 CLS#3:LOCATE x+3,y:PRINT " "
+840 IF a$="T" THEN GOTO 1390
+850 IF a$="P" THEN GOTO 1430
+860 IF a$="S" THEN 1670 ELSE IF A$="L" THEN GOTO 1810
+870 IF a$="N" THEN GOSUB 2200
+880 IF a$="ó" THEN 960
+890 IF a$="ò" THEN 1000
+900 IF a$="ñ" THEN 1100
+910 IF a$="ð" THEN 1120
+920 IF a$="à" AND y=4 THEN GOTO 1370 ELSE IF a$="à" THEN 1170
+930 GOTO 780
+940 'Cursor-Routine und Eingabe
+950 'Eine Stelle nach rechts
+960 X=X+2:notenzeiger=notenzeiger+1:notencontrolle=notencontrolle+1:IF notencontrolle>8 THEN notencontrolle=1
+970 IF notenzeiger>600 THEN fehler$="Notenspeicher voll":GOSUB 2250:x=x-2:notenzeiger=600
+980 GOTO 1140 
+990 'Eine Stelle nach links,Korektur
+1000 IF y=4 THEN X=X-2:IF x<3 THEN x=3:notenzeiger=notenzeiger ELSE notenzeiger=notenzeiger-1:notencontrolle=notencontrolle-1:IF notencontrolle<1 THEN notencontrolle=8
+1010 IF notenzeiger<1 THEN notenzeiger=1
+1020 IF y<>4 THEN INPUT #3,"Welcher Kanal soll geloescht werden (A,B,C)";a$ ELSE 1140 
+1030 IF a$="" THEN 750
+1040 a$=UPPER$(a$)
+1050 IF a$="A" THEN note(notenzeiger,1)=0:kan=1:kanala=0:kanalacontrolle=notenzeiger-1:GOTO 1080
+1060 IF a$="B" THEN note(notenzeiger,2)=0:kan=2:kanalb=0:kanalbcontrolle=notenzeiger-1:GOTO 1080
+1070 IF a$="C" THEN note(notenzeiger,3)=0:kan=3:kanalc=0:kanalccontrolle=notenzeiger-1
+1080 FOR iopset=1 TO laenge(notenzeiger,kan)*2-1:LOCATE x+iopset,10+kan:PRINT" ":NEXT:LOCATE x+1,y:PRINT"  ":GOTO 590
+1090 'Eine Stelle nach unten
+1100 y=Y+1:GOTO 1140
+1110 'Eine Stelle nach oben
+1120 y=Y-1
+1130 'Kontrolle der Werte
+1140 SOUND 1,500,20,12:SOUND 2,200,10,12:SOUND 4,100,5,12:IF y<4 OR Y>10 THEN y=4
+1150 IF x<3 THEN x=3 ELSE IF x>65 THEN fehler$="Ende von Blatt Nummer"+STR$(blatt)+"":GOSUB 2250:INPUT#3,"Notenblatt korekt <J><N>";wahl$:IF UPPER$(wahl$)="J" THEN blatt=blatt+1:x=3:GOTO 490 ELSE x=65:notenzeiger=notenzeiger-1
+1160 LOCATE x+3,y:PRINT CHR$(247);:GOTO 650
+1170 IF kanala=1 AND kanalb=1 AND kanalc=1 THEN fehler$="Noch keine Eingaben moeglich.Alle Kanaele aktiv !!!":GOSUB 2250:kan$=CHR$(206):GOTO 770
+1180 'Eingabe der Notenwerte an Cursor-position
+1190 a$=INKEY$:IF a$=CHR$(224) THEN 1240 ELSE IF a$=" " THEN LOCATE x+1,y:PRINT"  ":GOTO 2270
+1200 IF a$="ð" THEN note=note+1:GOTO 1210 ELSE IF a$="ñ" THEN note=note-1:GOTO 1210 ELSE IF a$=CHR$(13) THEN LOCATE x+1,y:PRINT"  ":GOTO 650 ELSE LOCATE x,y:PRINT note:GOTO 1190
+1210 SOUND 1,300,10,12:IF note>12 OR note<0 THEN note=0
+1220 LOCATE x,y:SOUND 1,500,1,10:SOUND 4,507,1,10:PRINT note
+1230 GOTO 1190
+1240 'Daten einsetzen
+1250 IF kanala=0 THEN kan$="A":kan=1:kanalacontrolle=notenzeiger+artnote-1:kanala=1:GOTO 1280
+1260 IF kanala<>0 AND kanalb=0 THEN kan$="B":kan=2:kanalbcontrolle=notenzeiger+artnote-1:kanalb=1:GOTO 1280
+1270 IF kanalb<>0 AND kanalc=0 THEN kan$="C":kan=3:kanalccontrolle=notenzeiger+artnote-1:kanalc=1
+1280 ON y-4 GOSUB 1300,1310,1320,1330,1340,1350
+1290 laenge(notenzeiger,kan)=artnote:PRINT#3,"Ready.":note(notenzeiger,kan)=wert:LOCATE x,y:PRINT note:FOR iopset=1 TO artnote*2-1:LOCATE x+iopset,10+kan:PRINT ""kan$"":NEXT:GOTO 770
+1300 wert=he(note):RETURN
+1310 wert=h(note):RETURN
+1320 wert=g(note):RETURN
+1330 wert=d(note):RETURN
+1340 wert=a(note):RETURN
+1350 wert=e(note):RETURN
+1360 'Fehlermeldung Korektursaite
+1370 fehler$="Keine Eintragungen auf der Korektursaite!!":GOSUB 2260
+1380 GOTO 750
+1390 'Eingabe Taktwiederholung
+1400 IF taktcount>10 THEN fehler$="Leider keine Wiederholungseingaben mehr moeglich!!!":GOSUB 2260:GOTO 750
+1410 INPUT#3,"Wiederholung ab welcher Stelle";w:IF w>600 OR w<1 THEN 750 ELSE takta(taktcount)=notenzeiger:taktb(taktcount)=w+1:taktcount=taktcount+1:PRINT #3,"Ready.":GOTO 750
+1420 'Play-Modus
+1430 INPUT #3,"Geschwindigkeit";w:LOCATE 40,21:PRINT"SPEED  :";USING"###";w
+1440 IF w<10 THEN 1430
+1450 INPUT#3,"Lautstaerkehuellkurven definieren(J/N)";y$:IF UPPER$(y$)="J" THEN GOTO 1930
+1460 INPUT #3,"Lautstaerkenhuellkurven (1-9) fuer A,B, und C";ea,eb,ec:IF ea>9 OR eb>9 OR ec>9 OR ea<1 OR eb<0 OR ec<0 THEN 1460
+1470 INPUT #3,"Tonhuellkurven (1-9) fuer A,B, und C";ta,tb,tc:IF ta>9 OR tb>9 OR tc>9 OR ta<1 OR tb<0 OR tc<0 THEN 1470
+1480 INPUT #3,"Vibrationsfaktor(0-15)";v:IF v>15 OR v<0 THEN 1480 ELSE LOCATE 40,20:PRINT"VIBRATO:";USING"###";v
+1490 INPUT#3,"Rauschen fuer A,B und C(0-31)";r,r1,r2:IF r<0 OR r>31 OR r1<0 OR r1>31 OR r2<0 OR r2>31 THEN 1490 
+1500 ENT -1,1,v,4,1,-v,4:ENT -2,1,v,2:ENT -3,1,-v,2:ENT 4,1,5*v,1,5,-v,1:ENT 5,1,-5*v,1,5,v,1:ENT -6,1,v,2,1,-v,1:ENT -7,1,v,9,1,-v,9:ENT -8,1,v,1,v,-1,1
+1510 INPUT#3,"Light-Show (J/N)";a$:IF UPPER$(a$)="J" THEN 1980
+1520 LOCATE 60,15:PRINT"ENV Kanal A";ea:LOCATE 60,16:PRINT"ENV Kanal B";eb:LOCATE 60,17:PRINT"ENV Kanal C";ec:LOCATE 60,18:PRINT"ENT Kanal A";ta:LOCATE 60,19:PRINT"ENT Kanal B";tb:LOCATE 60,20:PRINT"ENT Kanal C";tc
+1530 LOCATE 60,21:PRINT"RAUSCHEN  A ";USING"##";r:LOCATE 60,22:PRINT"RAUSCHEN  B ";USING"##";r1:LOCATE 60,23:PRINT"RAUSCHEN  C ";USING"##";r2
+1540 LOCATE 40,15:PRINT"KANAL A:":LOCATE 40,16:PRINT"KANAL B:":LOCATE 40,17:PRINT"KANAL C:":LOCATE 40,18:PRINT"STELLE :":LOCATE 40,19:PRINT "ZEIT   :"
+1550 i=1:t=TIME 
+1560 taktcount=0
+1570 IF takta(taktcount)=i THEN i=taktb(taktcount):taktcount=taktcount+1 ELSE i=i+1
+1580 IF i>600 THEN 490
+1590 LOCATE 48,15:PRINT USING"###";note(i,1):LOCATE 48,16:PRINT USING"###";note(i,2):LOCATE 48,17:PRINT USING"###";note(i,3):LOCATE 48,18:PRINT USING"###";i:LOCATE 48,19:PRINT USING"###";INT((TIME-t)/900) 
+1600 IF note(i,1)=0 THEN 1610 ELSE IF note(i,1)=-1 THEN SOUND 129,3,laenge(i,1)*w,0 ELSE SOUND 129,note(i,1),laenge(i,1)*w,0,ea,ta,r
+1610 IF note(i,2)=0 THEN 1620 ELSE IF note(i,2)=-1 THEN SOUND 130,3,laenge(i,2)*w,0 ELSE SOUND 130,note(i,2),laenge(i,2)*w,0,eb,tb,r1
+1620 IF note(i,3)=0 THEN 1630 ELSE IF note(i,3)=-1 THEN SOUND 132,3,laenge(i,3)*w,0 ELSE SOUND 132,note(i,3),laenge(i,3)*w,0,ec,tc,r2
+1630 FOR e=1 TO w/2:NEXT
+1640 a$=INKEY$:IF a$<>"" THEN GOSUB 2440
+1650 GOTO 1570
+1660 'Abspeicher Modus
+1670 INPUT #3,"Abspeicher-Modus.Name";a$:IF a$="" THEN 1670
+1680 OPENOUT "!"+a$
+1690 FOR i=1 TO notenzeiger
+1700 FOR ii=1 TO 3
+1710 PRINT #9,note(i,ii);laenge(i,ii):NEXT:NEXT
+1720 CLOSEOUT
+1730 PRINT #3,"Taste druecken.":CALL &BB06
+1740 OPENOUT"!"+a$
+1750 FOR i=0 TO 10
+1760 PRINT #9,takta(i);taktb(i):NEXT
+1770 PRINT#3,"Ready."
+1780 CLOSEOUT
+1790 GOTO 490
+1800 'Einspeicher-Modus
+1810 maxis=0:FOR opo=1 TO 550:IF note(opo,1)<>0 OR note(opo,2)<>0 OR note(opo,3)<>0 THEN maxis=maxis+1       
+1820 NEXT:IF maxis<>0 THEN fehler$="Notenspeicher enthaelt noch Werte.":GOSUB 2250:POKE 0,255:RUN
+1830 INPUT #3,"Einspeicher-Modus.Name";a$:POKE 0,1
+1840 OPENIN "!"+a$+".mus"
+1850 FOR i=1 TO 700 
+1860 FOR ii=1 TO 3
+1870 INPUT #9,note(i,ii),laenge(i,ii):NEXT:NEXT
+1880 CLOSEIN:PRINT #3,"Taste druecken.":CALL &BB06:OPENIN"!"+a$
+1890 FOR i=0 TO 10
+1900 INPUT #9,takta(i),taktb(i):NEXT
+1910 CLOSEIN
+1920 GOTO 490
+1930 'Env definieren
+1940 n=1
+1950 INPUT#3,"Veraenderungsfolgen eingeben (n1,n2,Zeit,n1,n2,Zeit,n1,n2,Zeit)";n1,n2,zeit1,n3,n4,zeit2,n5,n6,zeit3:IF n1<0 OR n1>127 OR n3<0 OR n3>127 OR n5<0 OR n5>127 OR n2<-128 OR n2>127 OR n4<-128 OR n4>127 OR n6<-128 OR n6>127  THEN 1950
+1960 IF zeit1<0 OR  zeit1>255 OR  zeit2<0 OR  zeit2>255 OR  zeit3<0 OR  zeit3>255 THEN 1950
+1970 ENV n,n1,n2,zeit1,n3,n4,zeit2,n5,n6,zeit3:INPUT #3,"Noch mehr";a$:IF UPPER$(a$)="J" THEN 1940 ELSE ea=n:eb=n:ec=n:GOTO 1470
+1980 'Light-Show
+1990 CALL &BC02:MODE 2:INK 0,0:BORDER 0
+2000 PRINT""
+2010 alt=1:alt2=1:alt3=1
+2020 LOCATE 60,21:PRINT"RAUSCHEN  A ";USING"##";r:LOCATE 60,22:PRINT"RAUSCHEN  B ";USING"##";r1:LOCATE 60,23:PRINT"RAUSCHEN  C ";USING"##";r2
+2030 LOCATE 60,15:PRINT"ENV Kanal A";ea:LOCATE 60,16:PRINT"ENV Kanal B";eb:LOCATE 60,17:PRINT"ENV Kanal C";ec:LOCATE 60,18:PRINT"ENT Kanal A";ta:LOCATE 60,19:PRINT"ENT Kanal B";tb:LOCATE 60,20:PRINT"ENT Kanal C";tc
+2040 LOCATE 1,1:PRINT"TONHOEHE KANAL A <<<HOCH  TIEF>>>":FOR poi=1 TO 2:FOR string=1 TO 80:PRINT CHR$(233);:NEXT:PRINT:NEXT
+2050 LOCATE 1,6:PRINT"TONHOEHE KANAL B <<<HOCH  TIEF>>>":FOR poi=1 TO 2:FOR string=1 TO 80:PRINT CHR$(233);:NEXT:PRINT:NEXT 
+2060 LOCATE 1,11:PRINT"TONHOEHE KANAL C <<<HOCH  TIEF>>>":FOR poi=1 TO 2:FOR string=1 TO 80:PRINT CHR$(233);:NEXT:PRINT:NEXT
+2070 i=1:taktcount=0
+2080 IF takta(taktcount)=i THEN i=taktb(taktcount):taktcount=taktcount+1 ELSE i=i+1
+2090 IF i>600 THEN GOTO 490
+2100 ka=note(i,1)/9.745000001:ka2=note(i,2)/9.745000001:ka3=note(i,3)/9.745000001
+2110 IF ka<1 THEN ka=1
+2120 IF ka2<1 THEN ka2=1
+2130 IF ka3<1 THEN ka3=1
+2140 LOCATE alt,3:PRINT" ":IF note(i,1)=0 THEN 2150 ELSE IF note(i,1)=-1 THEN SOUND 129,3,laenge(i,1)*w,0 ELSE SOUND 129,note(i,1),laenge(i,1)*w,0,ea,ta,r:LOCATE ka,3:PRINT CHR$(254):alt=ka
+2150 LOCATE alt2,8:PRINT" ":IF note(i,2)=0 THEN 2160 ELSE IF note(i,2)=-1 THEN SOUND 130,3,laenge(i,2)*w,0 ELSE SOUND 130,note(i,2),laenge(i,2)*w,0,eb,tb,r1:LOCATE ka2,8:PRINT CHR$(254):alt2=ka2
+2160 LOCATE alt3,13:PRINT" ":IF note(i,3)=0 THEN 2170 ELSE IF note(i,3)=-1 THEN SOUND 132,3,laenge(i,3)*w,0 ELSE SOUND 132,note(i,3),laenge(i,3)*w,0,ec,tc,r2:LOCATE ka3,13:PRINT CHR$(254):alt3=ka3
+2170 a$=INKEY$:IF a$<>"" THEN GOSUB 2440
+2180 FOR e=1 TO w*2:NEXT
+2190 GOTO 2080 
+2200 'Notenlaengen einbauen
+2210 INPUT #3,"Laenge der Note (8=Ganz,4=Halb,2=Viertel,1=Achtel)";artnote 
+2220 IF artnote<>1 AND artnote<>2 AND artnote<>4 AND artnote<>8 THEN 2210
+2230 PRINT #3,"Ready."
+2240 RETURN
+2250 'User-Fehler-display
+2260 FOR warte=1 TO 12:SOUND 1,200,10,13:PRINT #3,fehler$:SOUND 1,100,10,13:SOUND 2,150,10,13:SOUND 4,207,10,13:FOR warte1=1 TO 100:NEXT:NEXT:PRINT #3,"Ready.":RETURN
+2270 'Pausen einsetzen
+2280 IF kanala=1 AND kanalb=1 AND kanalc=1 THEN fehler$="Noch keine Pausen-Eingaben moeglich.Alle Kanaele aktiv !!!":GOSUB 2250:kan$=CHR$(206):GOTO 770
+2290 p$=""
+2300 IF kanala=0 THEN p$="A"
+2310 IF kanalb=0 THEN p$=p$+",B"
+2320 IF kanalc=0 THEN p$=p$+",C"
+2330 PRINT #3,"Auf welchem Kanal soll die Pause sitzen ("p$") ";:INPUT#3,wahl$
+2340 wahl$=UPPER$(wahl$)
+2350 IF wahl$="" THEN 770
+2360 IF wahl$="A" AND kanala=0 THEN kan=1:kanalacontrolle=notenzeiger+artnote-1:kanala=1:GOTO 2390
+2370 IF wahl$="B" AND kanalb=0 THEN kan=2:kanalbcontrolle=notenzeiger+artnote-1:kanalb=1:GOTO 2390
+2380 IF wahl$="C" AND kanalc=0 THEN kan=3:kanalccontrolle=notenzeiger+artnote-1:kanalc=1  ELSE 2330
+2390 PRINT #3,"Ready."
+2400 LOCATE x+1,y:PRINT CHR$(206)
+2410 FOR iopset=0 TO artnote*2-1:LOCATE x+iopset,10+kan:PRINT CHR$(206):NEXT
+2420 laenge(notenzeiger,kan)=artnote:note(notenzeiger,kan)=-1:GOTO 770
+2430 'Aenderung der Huellkurven und Rauschzustaende
+2440 IF ASC(a$)<4 THEN ON ASC(A$) GOTO 2500,2520,2540 
+2450 IF a$=" " THEN taktcount=0:i=1:RETURN ELSE IF UPPER$(A$)="E" THEN GOTO 490
+2460 IF ASC(A$)>48 AND ASC(A$)<58 THEN ON ASC(A$)-48 GOTO 2680,2690,2700,2710,2720,2730,2740,2750,2760
+2470 IF ASC(A$)>67 AND ASC(A$)<97 OR ASC(A$)>99 OR ASC(a$)>3 AND ASC(a$)<32 OR ASC(a$)>32 AND ASC(a$)<65 THEN RETURN
+2480 IF ASC(a$)<97 THEN ON ASC(a$)-64 GOTO 2560,2580,2600
+2490 ON ASC(a$)-96 GOTO 2620,2640,2660
+2500 r=r+1:IF r>30 THEN r=0
+2510 LOCATE 72,21:PRINT USING"##";r:RETURN
+2520 r1=r1+1:IF r1>30 THEN r1=0
+2530 LOCATE 72,22:PRINT USING"##";r1:RETURN
+2540 r2=r2+1:IF r2>30 THEN r2=0
+2550 LOCATE 72,23:PRINT USING"##";r2:RETURN 
+2560 ta=ta+1:IF ta>9 THEN ta=1
+2570 LOCATE 71,18:PRINT ta:RETURN
+2580 tb=tb+1:IF tb>9 THEN tb=1
+2590 LOCATE 71,19:PRINT tb:RETURN
+2600 tc=tc+1:IF tc>9 THEN tc=1
+2610 LOCATE 71,20:PRINT tc:RETURN
+2620 ea=ea+1:IF ea>9 THEN ea=1
+2630 LOCATE 71,15:PRINT ea:RETURN 
+2640 eb=eb+1:IF eb>9 THEN eb=1
+2650 LOCATE 71,16:PRINT eb:RETURN 
+2660 ec=ec+1:IF ec>9 THEN ec=1
+2670 LOCATE 71,17:PRINT ec:RETURN
+2680 EA=0:GOTO 2630
+2690 EB=0:GOTO 2650
+2700 EC=0:GOTO 2670
+2710 TA=0:GOTO 2570
+2720 TB=0:GOTO 2590
+2730 TC=0:GOTO 2610
+2740 R=0:GOTO 2510
+2750 R1=0:GOTO 2530
+2760 R2=0:GOTO 2550
