@@ -144,3 +144,22 @@ My letter including the hand-written program documentation to, and
 response from, the ["DMV
 Verlag"](https://www.cpcwiki.eu/index.php/DMV) is presented in [the
 `evidence/` folder.](evidence/)
+
+### Reading the Programs on the Disk Images
+
+The BASIC programs on the disk images are stored tokenised, which is how
+Locomotive BASIC saves unless you ask for `,A`. [`tools/debas.py`](tools/)
+turns them back into a listing, so you can read them without a CPC or an
+emulator:
+
+```sh
+iDSK cpc/SONGS-TCX.dsk -g TABCOMP1.BAS
+python3 tools/debas.py TABCOMP1.BAS
+```
+
+It handles the AMSDOS header, string literals with embedded control codes
+(the listings are full of `CHR$(24)` for inverse video), `|RSX` commands,
+and the variable type suffixes, which are implied by `DEFINT a-y` rather
+than stored. It was checked by detokenising `TAB-COMP.BAS` and comparing
+it against [`src/tabcomp.txt`](src/tabcomp.txt), the listing transcribed
+from the original: all 444 lines come back identical.
