@@ -3,6 +3,17 @@ The World's First (?) Tablature Composer Software - written in 1986 on an Amstra
 
 ## Latest News
 
+### 18-9-2026
+
+**Forty years later, the original vision of Tab Composer CPC has been
+realized.** The program I wanted to write in 1986 - in Z80 assembler, fast,
+with MIDI - now exists. I didn't have the knowledge to pull that off as a
+16 year old; Claude wrote it, and I directed and tested it. See
+[Forty Years Later](#forty-years-later-the-1986-vision-in-z80) below for the
+program, the disc images, the source, and how it was built.
+
+![CPC Tab Composer 2.0 playing BOUREE](pics/z80-playing.png)
+
 ### 5-3-2026 
 
 I have restored many of the **old songs** I made with Tab Composer CPC back in ~1986 from 40 year old cassette tapes! Check out [the YouTube video for the details.](https://youtu.be/yU8MmQVJ87o)
@@ -16,6 +27,380 @@ Note that loading songs with `tabcompx.bas` takes a bit longer than with `tabcom
 Moreover, I also retrieved [the very first *Version 0 of Tab Composer CPC*](cpc/TABCOMP0.dsk) from tape! This is a very primitive "first sketch of an idea" prototype version, so don't use it for anything - it is archived here for the sake of completeness and "just for fun". A few songs are also included for it on the disk - you can use the `6` on the number
 pad, hit `SPACE`, enter song name (e.g., `wilsons's`), hit `j` for `LIED SPIELEN?`, use 50 for playback speed, etc. Enjoy! 
 
+
+## Forty Years Later: the 1986 Vision in Z80
+
+### The story
+
+I got my Amstrad CPC 464 in April 1985, for my confirmation. I started
+sketching what became Tab Composer CPC late that year, and the version I
+still call the finished one dates from 1986. It did what I had set out to
+do - I could write my guitar exercises down in tablature, see them on the
+screen, and hear them played back on the AY.
+
+But it was written in Locomotive BASIC, and BASIC set the limits. Drawing a
+page took seconds. Every parameter had to be typed at a prompt. The cursor
+keys had to mean two things at once, which is why there was a
+"Korrektursaite" - a whole extra row on the sheet whose only purpose was to
+give the left arrow somewhere harmless to mean "move" instead of "delete".
+Entering a note played a fixed click rather than the note itself, so you
+could not hear what you were writing. And it could only ever drive the
+three voices of the sound chip.
+
+What I actually wanted was the same program in Z80 assembler: fast enough
+that the screen kept up with me, and - once MIDI came into my life - able
+to drive a synthesiser instead of only the AY. I never wrote it. At 16 I
+did not have the knowledge to pull that off. Machine code was something I
+read about in magazines; the gap between reading about it and writing five
+thousand lines of it was not one I could close.
+
+In September 2026 I sat down with Claude and we built it. I directed the
+work, made the design calls, and tested every build - first in the
+emulator, then on the real 6128 with the MIDI card. Claude wrote the Z80.
+Almost exactly forty years after the BASIC version, the loop closes, and
+the program I had in mind in 1986 exists.
+
+### CPC Tab Composer 2.0
+
+![The note sheet](pics/z80-sheet.png)
+
+Everything the 1986 program did, minus two things I deliberately dropped -
+cassette support and the noise channels - and with the things BASIC could
+not do:
+
+- **You hear the note you are choosing.** The 1986 version played
+  `SOUND 130,100,10,15` while you picked a fret: one fixed click, the same
+  pitch whichever fret you were on. Now the fret you are looking at is the
+  note you hear, on the AY or over MIDI.
+- **The display follows the music.** A marker moves along the sheet as it
+  plays, the page turns by itself when the music leaves it, and the panel
+  shows what each voice is sounding, where you are and how long it has been
+  running.
+- **MIDI OUT**, through the BluePillCPC Ultimate MIDI Card, with a switch
+  for AY, MIDI, or both - and a General MIDI instrument you can change
+  while it plays.
+- **Repeats you can see.** The jump is marked above the sheet and so is the
+  place it jumps to, which the BASIC never showed.
+- **No prompts for things that should be keys.** Tempo, vibrato, note
+  length, envelopes and instrument are all single keys, and most of them
+  work while the music plays.
+
+### Using it
+
+`RUN"TABCOMP` and the sheet comes up. `H` shows the key list at any time:
+
+![The help page](pics/z80-help.png)
+
+| Key | |
+| --- | --- |
+| cursor keys | move the marker - all four, on any row |
+| `ENTER` | enter a note: up/down pick the fret, `ENTER` keeps it, `SPACE` makes it a rest, `ESC` abandons it |
+| `DEL` / `CLR` | delete the note on this string |
+| `N` | note length: whole, half, quarter, eighth |
+| `+` `-` | a sheet forward or back (32 positions to a sheet) |
+| `T` / `A` | set a repeat / list them. `T` then `0` removes the one under the cursor |
+| `L` `S` `C` | load, save, catalogue |
+| `B` | write the song out as a BASIC program |
+| `P` | play |
+| `M` | AY, MIDI or both |
+| `I` | the General MIDI instrument |
+| `V`, `<` `>` | vibrato, tempo |
+| `Q` | quit, with a confirmation |
+
+While it plays: `<` `>` tempo, `+` `-` step the MIDI instrument, `A B C`
+and `a b c` step the tone and amplitude envelope of that voice, `1`-`6`
+switch one off, `SPACE` starts again, `ESC` stops.
+
+![BOUREE loaded](pics/z80-bouree.png)
+
+Notes are stored as the tablature position itself - string and fret - which
+is what lets one representation drive both the AY and MIDI. On the AY a
+note is a period looked up in the table the BASIC already had; over MIDI it
+is the open string plus the fret, and nothing else. Keeping the fingering
+in the file rather than a tone period was the right decision in 1986 for a
+reason that only showed up now.
+
+`B` writes the song as a Locomotive BASIC program - `ENV`, `INPUT"Speed"`,
+a `READ`/`DATA` loop and three `SOUND` statements - so a piece can be
+played on any CPC with nothing else loaded, exactly as the 1986 version's
+`.BAL` export did.
+
+### Disc images
+
+| | |
+| --- | --- |
+| [`hfe/tabcomp-all.hfe`](hfe/tabcomp-all.hfe) | the program and all eighteen restored songs - for a Gotek or HxC |
+| [`hfe/tabcomp-1.hfe`](hfe/tabcomp-1.hfe) | the program and nine of them |
+| [`hfe/tabcomp-2.hfe`](hfe/tabcomp-2.hfe) | the program and the other nine |
+| [`cpc/tabcomp-all.dsk`](cpc/tabcomp-all.dsk) | the same three as DSK images, for emulators |
+
+Every disc carries the program, so any of them boots on its own.
+
+The eighteen songs are the 1986 originals restored from tape, and they are
+in the older file layout - note/length pairs with no count at the front,
+the note held as an AY period rather than a fingering. The loader reads
+that layout as well as the one the program writes itself, and turns the
+periods back into positions on the neck the way `tabcompx.bas` does: lowest
+fret first, so the fingering comes back as it went in. Files the program
+saves are written in the newer layout, so they load in the 1986 BASIC too.
+
+### The source
+
+[`z80/`](z80/) holds about 5,200 lines of Z80:
+
+| | |
+| --- | --- |
+| [`z80/tabcomp.asm`](z80/tabcomp.asm) | the main loop, the screen layout, the panel |
+| [`z80/screen.asm`](z80/screen.asm) | everything that writes to screen memory directly |
+| [`z80/edit.asm`](z80/edit.asm) | note entry, editing and deletion |
+| [`z80/play.asm`](z80/play.asm) | playback, envelopes, timing |
+| [`z80/midi.asm`](z80/midi.asm) | MIDI OUT |
+| [`z80/takt.asm`](z80/takt.asm) | repeats |
+| [`z80/load.asm`](z80/load.asm) / [`z80/save.asm`](z80/save.asm) | the `.MUS` file, both layouts |
+| [`z80/bal.asm`](z80/bal.asm) | the BASIC program generator |
+| [`z80/PORT.md`](z80/PORT.md) | the porting notes, including every trap below |
+
+### Building it
+
+    cd z80 && ./build.sh
+
+[rasm](http://rasm.wikidot.com/) assembles it, [iDSK](https://github.com/cpcsdk/idsk)
+puts `TABCOMP.BIN` and the songs on a disc image, and
+[the HxC command line tool](https://hxc2001.com/) converts that to HFE:
+
+    hxcfe -finput:tabcomp-all.dsk -foutput:tabcomp-all.hfe -conv:HXC_HFE
+
+The build asserts its own memory map, which is not decoration - see below.
+
+Everything was tested in [MAME](https://www.mamedev.org/) before it went
+near the real machine, and tested by *measurement* rather than by looking
+at it: MAME's Lua interface drives the keyboard, reads the CPC's memory
+while the program runs, taps the I/O ports, and records the audio. Sound in
+particular was never believed without a recording - `z80/audible.sh` plays
+a piece with the audio captured to a file and measures the energy at the
+pitch the note should be, because counting sound chip writes proves
+nothing: the mixer can have the tone switched off and the registers will
+still look busy.
+
+## Technical Challenges
+
+### The program that played nothing
+
+The first version drew its sheet, reported that the sound queue had
+accepted every note, and made no sound at all. The sound chip was being
+handed nine byte blocks that were not the blocks the program had written.
+
+The cause is a CPC fact that is easy to read past: **the lower ROM shadows
+RAM at `#0000-#3FFF` whenever the firmware pages it in**, which it does
+inside its own routines and its interrupt handler. The program had been
+assembled at `#1000`. The firmware's sound manager, running from the
+interrupt, read the sound block at that address - and got ROM. Measured
+with byte identical code: `#1000` and `#2000` silent, `#4000` and `#9000`
+audible. Everything now lives at `#4000` and above.
+
+The giveaway had been sitting in a trace for hours: "periods" of 197 and
+213, which are `&C5 &D5`, `push bc` / `push de` - lower ROM opcodes.
+
+### Fast screen updates
+
+This is the part that makes the program feel like the one I wanted.
+
+The firmware's `TXT OUTPUT` costs about **1.7 ms per character** on a
+CPC. That number is the whole story of the BASIC version's sluggishness,
+and it does not improve just because the caller is now assembler. A full
+page of the sheet is 576 blanked cells plus the notes; the information
+panel is another 880. Through the firmware that is one and a half seconds
+for the sheet and nearly two for the panel.
+
+MODE 2 is one bit per pixel, 640 across, and the screen is not linear:
+
+    address = #C000 + (y AND 7) * 2048 + (y / 8) * 80 + x
+
+with `y` the scanline and `x` the byte column, eight pixels to the byte.
+Writing it directly is a different order of cost, and four tricks make it
+cheap:
+
+**A character is eight stores, with no address arithmetic between them.**
+A character cell is eight scanlines, and the interleave blocks are eight
+scanlines too - so across one cell `(y / 8) * 80 + x` never changes and
+only the `(y AND 7) * 2048` term moves. Consecutive lines of a glyph are
+therefore *exactly* 2048 bytes apart, which is `#0800`, which is "add 8 to
+the high byte":
+
+```z80
+;; DE -> the cell's top line in screen memory, HL -> the glyph's 8 bytes,
+;; C = #FF for inverse video or 0 for normal
+dch1:
+    ld a,(hl)                   ; the glyph byte
+    xor c                       ; inverse video is the glyph, inverted
+    ld (de),a                   ; straight into the screen
+    inc hl
+    ld a,d
+    add a,8                     ; +2048: the next scanline of this cell
+    ld d,a
+    djnz dch1                   ; eight times
+```
+
+No recomputed addresses, no carry handling, no firmware. `LDIR` cannot do
+this - the eight rows are not contiguous - but it does not need to.
+
+**The glyphs come from the firmware's own font, copied out once.**
+`TXT GET MATRIX` gives the address of a character's eight bytes, and for
+the standard set that address is in the lower ROM, which the program
+cannot read unless it asks. `KL L ROM ENABLE` at `&B906` pages it in for
+the copy; after that a glyph is eight bytes at `FONT + character * 8`. (The
+address was found by measurement, not from a manual: the byte at `#3A08`,
+where the firmware says the letter A lives, reads `00` before that call and
+`18` after - which is the apex of an A.)
+
+**A row of identical characters is one byte repeated.** The information
+panel's background is 880 cells of the same block. Every cell being the
+same glyph means every scanline of a row is one byte written eighty times,
+so the whole panel is 88 runs of 80 bytes instead of 880 firmware calls -
+and a run of 80 unrolled stores costs about 13 T-states a byte.
+
+**The row offset comes out of a table.** `(y / 8) * 80` started as a loop
+of up to 24 additions, and it sits in the inner loop of every character
+drawn - several hundred per page. A table of the 25 row offsets costs 50
+bytes and removes it entirely.
+
+Then two decisions about *what* to draw at all:
+
+**Repair one cell, not the whole sheet.** Blanking the marker damages
+exactly one character cell. The BASIC redraws all six strings after every
+keypress - line 1520 ends in `GOTO 730`, "Saiten zeichnen" - which is six
+512 pixel lines. Here `fixcell` puts back the eight bytes of grid that the
+one damaged cell contained: the string line through it, and the bar line if
+one runs down that column. A cursor move now costs nothing measurable.
+
+**A page turn does not redraw the grid.** The grid is identical on every
+page, so turning to the next 32 positions only has to take the old page's
+marks off - clearing the three bar rows, and putting the grid back under
+each cell that carried a digit - and draw the new page over the grid that
+is already there.
+
+Measured, on the 1/300 s clock the firmware maintains:
+
+| | through the firmware | direct |
+| --- | --- | --- |
+| one character | ~1.7 ms | 8 stores |
+| clearing the note sheet | 0.98 s | 0.04 s |
+| a whole page | 1.58 s | 0.16 s |
+| a page turn while playing | - | 0.093 s |
+| the panel and all its labels | ~1.9 s | 0.187 s |
+| a cursor move | 0.1 - 0.34 s | 8 bytes |
+
+### Playing in time while the screen is busy
+
+Once the display follows the music, every position has drawing to do, and
+the page turn has a great deal. Two things keep that inaudible.
+
+The first is that the **firmware sound queue is interrupt driven**. A note
+is handed over with its duration and the sound manager sequences it from
+the interrupt, so the AY plays on regardless of what the main code is
+doing. The notes for a position are queued *before* any drawing for that
+position.
+
+The second is that **a position is timed against a clock, not counted out
+in a delay loop**. A delay loop makes a position last its work *plus* the
+delay, so the one position that redrew the page ran 160 ms long and the
+music stumbled once a page - audibly. `KL TIME PLEASE` at `&BD0D` returns a
+counter that ticks 300 times a second (measured: exactly 300 per second),
+so each position waits until *its own* elapsed time is up and the drawing
+happens inside the position it belongs to:
+
+```z80
+    call KL_TIME_PLEASE         ; when this position began
+    ld (psstart),hl
+    ...queue the three voices, then draw...
+ps_wait:
+    call KM_READ_CHAR           ; and keep the key, if there is one
+    jr nc,psw2
+    ld (pskey),a
+psw2:
+    call KL_TIME_PLEASE
+    ld de,(psstart)
+    or a
+    sbc hl,de                   ; how long this position has lasted
+    ld a,(speed)
+    ld e,a
+    ld d,0
+    or a
+    sbc hl,de
+    jr c,ps_wait
+```
+
+Comparing *elapsed against the step* rather than the clock against a
+deadline also means the 16 bit counter can wrap without anything going
+wrong. Measured afterwards: every position exactly 72 ticks, the one that
+turns the page included.
+
+### MIDI, and a byte that takes 320 microseconds
+
+MIDI is 31250 baud, one start bit, eight data, one stop - so a byte owns
+the wire for 320 us and nothing can go out faster, whatever the card's
+buffer says. This was learned the hard way on the CPC TRACKER project,
+where the first version sent bytes 98 us apart and the ones that got lost
+were program changes; a channel that loses its program change stays on
+General MIDI 1, Acoustic Grand Piano, and I heard piano on track 2 of a
+song on the real machine. So the wait lives *inside* the send routine and
+no caller can forget it. Measured on the wire here: 345 to 350 us between
+bytes.
+
+The whole MIDI layer is about 200 lines, because the tablature already
+holds what MIDI wants:
+
+```z80
+;; the open strings as MIDI note numbers, high E first
+midiopen: defb 0,64,59,55,50,45,40
+;; a note is the open string plus the fret. That is the entire mapping.
+```
+
+What MIDI does need, and the AY does not, is to be told when a note ends:
+the AY is handed a duration and looks after itself, so each voice here
+counts down the positions its note has left and gets a Note Off when they
+run out.
+
+### Traps worth writing down
+
+**The program grew into its own data.** Three times, a fixed address above
+the program - the font table, the song data - was quietly overwritten as
+the code grew past it, and every time the symptom looked like a drawing
+bug: blank glyphs, a garbled panel, nonsense text. The fix is a build time
+assertion, which is now in the source:
+
+    assert tabend < NOTES
+    assert tabend < FONT
+
+**A nought that ate the next character.** The routine that prints a number
+in three right aligned columns tested "the last digit always prints" with
+`ld a,b / cp 1 / jr z,print` - and A no longer held the digit at that
+point, it held B. So any number ending in zero printed `CHR$(1)`, which the
+firmware reads as "print the next character literally": the nought vanished
+*and* swallowed the character after it. A voice switched off kept showing
+its old envelope number, and an empty field showed the panel pattern
+through the hole.
+
+**A firmware call does not preserve HL.** After a failed load the program
+said so, waited for a key, and then fell into the path that reports
+success - which printed again from whatever HL held after the firmware's
+key call. It walked off into memory printing until it found a zero byte,
+spraying characters across the screen and flashing the border with whatever
+control codes it passed through. It looked like a crash and was a
+fall through.
+
+**AMSDOS talks to the screen.** A missing file makes AMSDOS print its own
+message wherever the cursor happens to be, over the sheet or the string
+names. It says that through the text VDU, so the VDU is switched off around
+the disc calls - `TXT VDU DISABLE` at `&BB57`, `TXT VDU ENABLE` at `&BB54` -
+and the program reports the outcome itself, in its own place. Direct screen
+writing is unaffected by that switch, which is what makes it usable here.
+
+**MAME never writes a `.dsk` back.** It opens the image read/write, the
+emulated machine sees its own writes and `CAT` lists the new file - and the
+host file is byte identical when MAME exits, silently. A disc write has to
+be verified inside the machine: save, load it back, and read the load
+buffer out of memory.
 
 ## Background & Purpose  
 
