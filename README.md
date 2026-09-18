@@ -352,9 +352,13 @@ And the rest:
   pitch whichever fret you were on. Now the fret you are looking at is the
   note you hear, on the AY or over MIDI - which is the other half of using
   this to learn a piece.
-- **MIDI OUT**, through the BluePillCPC Ultimate MIDI Card, with a switch
-  for AY, MIDI, or both - and a General MIDI instrument you can change
-  while it plays.
+- **MIDI OUT**, through the Ultimate MIDI Card from my
+  [BluePillCPC project](https://github.com/lambdamikel/BluePillCPC), with a
+  switch for AY, MIDI, or both - and a General MIDI instrument you can
+  change while it plays. **The card is optional**: without it the program
+  is exactly as it was, playing through the CPC's own sound chip, and only
+  the MIDI setting of the `M` key needs hardware that is not in the
+  machine.
 - **Repeats you can see.** The jump is marked above the sheet and so is the
   place it jumps to, which the BASIC never showed.
 - **No prompts for things that should be keys.** Tempo, vibrato, note
@@ -676,6 +680,12 @@ wrong. Measured afterwards: every position exactly 72 ticks, the one that
 turns the page included.
 
 ### MIDI, and a byte that takes 320 microseconds
+
+MIDI output goes through the Ultimate MIDI Card from my
+[BluePillCPC project](https://github.com/lambdamikel/BluePillCPC) - a card
+on the CPC's expansion port, at `&FBEE`. It is optional hardware: with no
+card fitted the program runs exactly as before on the AY, and only the MIDI
+and AY+MIDI settings of the `M` key have nothing to talk to.
 
 MIDI is 31250 baud, one start bit, eight data, one stop - so a byte owns
 the wire for 320 us and nothing can go out faster, whatever the card's
