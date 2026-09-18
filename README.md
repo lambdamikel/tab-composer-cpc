@@ -324,6 +324,54 @@ not do:
   length, envelopes and instrument are all single keys, and most of them
   work while the music plays.
 
+### What else changed, and why
+
+The screen is **in English**. The 1986 program was in German throughout -
+"Freie Kanaele", "Notenblattnummer", "Wiederholung ab welcher Stelle" - and
+that was fine for me, but this version is meant to be read by anyone who
+finds the repo. The field widths were kept identical so the dotted columns
+of the panel still line up: "Free Channels" is thirteen characters exactly
+as "Freie Kanaele" was.
+
+The rest are small things the 1986 design got stuck with, and every one of
+them is a deliberate change rather than an oversight:
+
+- **The Korrektursaite is gone.** In the BASIC the left arrow *deleted* the
+  note on the current string, so it could not also mean "go back" - and
+  that is the entire reason the sheet had an extra row above the top
+  string: somewhere harmless for the left arrow to mean "move". `DEL` and
+  `CLR` delete now, all four cursor keys simply move, and the extra row
+  has nothing left to do.
+- **`ENTER` enters a note**, where the BASIC used `COPY` - awkward to reach
+  on a modern keyboard - and `ENTER` confusingly meant "give up on this
+  note". `ENTER` starts it, `ENTER` keeps it, `ESC` abandons it. `COPY`
+  still works, for 1986 fingers.
+- **A note on a string that already has one is edited, not stacked.** The
+  BASIC only asked "is this voice free?", never "is this string already
+  taken here?", so you could put the same fret of the same string on all
+  three channels at once - a chord no guitar can play. Notes on *different*
+  strings at the same position are still a chord, of course.
+- **A rest can be deleted.** Line 1370 compares the string digit of 88
+  against rows that only go up to 6, so in 1986 a rest, once entered, was
+  permanent.
+- **A repeat can be deleted** - `T` then `0`, since positions start at 1.
+  The BASIC had no way to take one back at all.
+- **The sheet turns by itself** at either edge, instead of stopping to ask
+  "Notenblatt korekt &lt;J&gt;&lt;N&gt;". `+` and `-` still move a whole sheet.
+- **The catalogue comes up before the load prompt**, so you do not have to
+  remember what the songs are called.
+- **Messages wait to be read.** An error holds until a key is pressed, and
+  the keyboard is emptied first - otherwise the keystroke still in the
+  buffer from typing a filename takes the message away before you see it.
+  AMSDOS is kept quiet while the disc is searched, so a missing file
+  produces one message in one place rather than two in two.
+- **Quitting asks first.** It throws the song away, and there is no way
+  back from it.
+- **Cassette and the noise channels are gone.** The BASIC could switch to
+  tape (`K`, `D`, `G` for `|TAPE`, `|DISC` and `SPEED WRITE`); this is disc
+  only. The noise periods went the same way - they were never useful for a
+  guitar.
+
 ### Using it
 
 `RUN"TABCOMP` and the sheet comes up. `H` shows the key list at any time:
