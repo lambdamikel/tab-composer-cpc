@@ -486,13 +486,29 @@ saves are written in the newer layout, so they load in the 1986 BASIC too.
 
 ### Building it
 
-    cd z80 && ./build.sh
+    cd z80
+    ./build.sh          # assemble, and make a test disc with one song on it
+    ./dist.sh           # rebuild all three DSK and HFE images from scratch
 
 [rasm](http://rasm.wikidot.com/) assembles it, [iDSK](https://github.com/cpcsdk/idsk)
 puts `TABCOMP.BIN` and the songs on a disc image, and
-[the HxC command line tool](https://hxc2001.com/) converts that to HFE:
+[the HxC command line tool](https://hxc2001.com/) converts that to HFE.
+Both scripts find the tools on the `PATH`, or take them from the
+environment:
 
-    hxcfe -finput:tabcomp-all.dsk -foutput:tabcomp-all.hfe -conv:HXC_HFE
+    RASM=~/tools/rasm IDSK=~/tools/iDSK ./build.sh
+    HXCFE=~/tools/hxcfe ./dist.sh
+
+`dist.sh` is how the images in [`cpc/`](cpc/) and [`hfe/`](hfe/) were made:
+it takes the eighteen songs straight out of
+[`cpc/SONGS-TCX.dsk`](cpc/SONGS-TCX.dsk), the disc of pieces restored from
+my 1986 tapes, and puts them on a disc with the program. Rebuilding gives
+byte identical images.
+
+One thing to know about rasm: it reports a failed assembly on stdout and
+still exits 0, so `build.sh` looks for the line that says it wrote a binary
+rather than trusting the exit code. Several hours went into testing a stale
+binary before that was noticed.
 
 The build asserts its own memory map, which is not decoration - see below.
 
