@@ -294,14 +294,16 @@ still call the finished one dates from 1986. It did what I had set out to
 do - I could write my guitar exercises down in tablature, see them on the
 screen, and hear them played back on the AY.
 
-But it was written in Locomotive BASIC, and BASIC set the limits. Drawing a
-page took seconds. Every parameter had to be typed at a prompt. The cursor
-keys had to mean two things at once, which is why there was a
-"Korrektursaite" - a whole extra row on the sheet whose only purpose was to
-give the left arrow somewhere harmless to mean "move" instead of "delete".
-Entering a note played a fixed click rather than the note itself, so you
-could not hear what you were writing. And it could only ever drive the
-three voices of the sound chip.
+But it was written in Locomotive BASIC, and that set one hard limit:
+drawing a page of the sheet took seconds. Everything else follows from
+that. You could not watch the music while it played, because the screen
+could not keep up with it. And it could only ever drive the three voices of
+the CPC's sound chip - MIDI came into my life much later.
+
+Plenty of the rest was simply how a 16 year old designed it. Parameters
+were typed at prompts because prompts were what I knew. Some of the
+editing was awkward in ways I did not notice at the time. None of that was
+BASIC's fault, and the rewrite was a chance to think about it again.
 
 What I actually wanted was the same program in Z80 assembler: fast enough
 that the screen kept up with me, and - once MIDI came into my life - able
@@ -318,7 +320,7 @@ the program I had in mind in 1986 exists.
 
 ### CPC Tab Composer 2.0
 
-![The note sheet](pics/z80-sheet.png)
+![A song on the sheet](pics/z80-bouree.png)
 
 Everything the 1986 program did, minus two things I deliberately dropped -
 cassette support and the noise channels - and with the things BASIC could
@@ -374,23 +376,33 @@ finds the repo. The field widths were kept identical so the dotted columns
 of the panel still line up: "Free Channels" is thirteen characters exactly
 as "Freie Kanaele" was.
 
+**Editing is a great deal more intuitive.** In 1986 the keys had grown
+into odd habits - the left arrow deleted, `COPY` entered a note, `ENTER`
+abandoned one, and a note once written could not be changed, only removed
+and written again. Now the cursor keys move, `ENTER` enters and confirms,
+`ESC` cancels, `DEL` deletes, and entering a note where one already sits
+edits it. Those four keys do what they say everywhere in the program,
+including in the prompts.
+
 The rest are small things the 1986 design got stuck with, and every one of
 them is a deliberate change rather than an oversight:
 
-- **The Korrektursaite is gone.** In the BASIC the left arrow *deleted* the
-  note on the current string, so it could not also mean "go back" - and
-  that is the entire reason the sheet had an extra row above the top
-  string: somewhere harmless for the left arrow to mean "move". `DEL` and
-  `CLR` delete now, all four cursor keys simply move, and the extra row
-  has nothing left to do.
+- **The Korrektursaite is gone.** In the 1986 version the left arrow
+  *deleted* the note on the current string, so it could not also mean "go
+  back" - and that is the entire reason the sheet had an extra row above
+  the top string: somewhere harmless for the left arrow to mean "move". It
+  never occurred to me to put delete on another key. `DEL` and `CLR` do it
+  now, all four cursor keys simply move, and the extra row has nothing
+  left to do.
 - **`ENTER` enters a note**, where the BASIC used `COPY` - awkward to reach
   on a modern keyboard - and `ENTER` confusingly meant "give up on this
   note". `ENTER` starts it, `ENTER` keeps it, `ESC` abandons it. `COPY`
   still works, for 1986 fingers.
 - **A note on a string that already has one is edited, not stacked.** The
-  BASIC only asked "is this voice free?", never "is this string already
-  taken here?", so you could put the same fret of the same string on all
-  three channels at once - a chord no guitar can play. Notes on *different*
+  1986 version only asked "is this voice free?", never "is this string
+  already taken here?", so you could put the same fret of the same string
+  on all three channels at once - a chord no guitar can play, and no way to
+  simply change a note you had already written. Notes on *different*
   strings at the same position are still a chord, of course.
 - **A rest can be deleted.** Line 1370 compares the string digit of 88
   against rows that only go up to 6, so in 1986 a rest, once entered, was
@@ -458,8 +470,6 @@ The memory map, for anyone reading the source:
 While it plays: `<` `>` tempo, `+` `-` step the MIDI instrument, `A B C`
 and `a b c` step the tone and amplitude envelope of that voice, `1`-`6`
 switch one off, `SPACE` starts again, `ESC` stops.
-
-![BOUREE loaded](pics/z80-bouree.png)
 
 Notes are stored as the tablature position itself - string and fret - which
 is what lets one representation drive both the AY and MIDI. On the AY a
