@@ -413,6 +413,26 @@ them is a deliberate change rather than an oversight:
   only. The noise periods went the same way - they were never useful for a
   guitar.
 
+### What it needs
+
+**A stock 64K CPC with a disc drive, and nothing else.** No memory
+expansion: the program, the song, the font copy and AMSDOS's buffer all sit
+inside the base 64K, and the second bank of a 6128 is never touched.
+
+| | |
+| --- | --- |
+| CPC 464, 664 or 6128 | 64K is enough - tested on an emulated 464 with a DDI-1, loading and playing from disc |
+| a disc drive | DDI-1, DD1, built in, or a floppy emulator - AMSDOS comes with the interface, and the program loads and saves through it |
+| the Ultimate MIDI Card | **optional**, and only for the MIDI output setting |
+
+The memory map, for anyone reading the source:
+
+    #4000   code and text        ends around #6200
+    #7000   notes and lengths    700 positions x 3 voices, x2
+    #8100   the font copy        taken from the lower ROM at startup
+    #9E00   AMSDOS's 2K buffer
+    #C000   the screen
+
 ### Using it
 
 `RUN"TABCOMP` and the sheet comes up. `H` shows the key list at any time:
