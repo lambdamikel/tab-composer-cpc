@@ -12,7 +12,20 @@ with MIDI - now exists. I didn't have the knowledge to pull that off as a
 
 Best of all, **you can now watch the tablature scroll past as the music
 plays** - which is what I wanted the program for in the first place, back
-when I was using it to help me through my guitar lessons. See
+when I was using it to help me through my guitar lessons.
+
+That part was simply out of reach in 1986, and not for want of wanting it:
+**it is only possible because the screen is written directly, byte by byte,
+in Z80.** In BASIC a single page of the sheet took seconds to draw - you
+cannot follow music with that, whatever you do. Claude got a full page down
+to 0.16 s and a page turn to 0.093 s, inside the 0.24 s that one position
+of the music lasts, by writing into screen memory rather than asking the
+firmware: a character becomes eight stores 2048 bytes apart, a row of
+identical blocks becomes one byte written eighty times, and only the cells
+that actually changed are touched. The firmware costs about 1.7 ms *per
+character*. Nothing in Locomotive BASIC could have closed that gap - this
+is exactly the kind of machine level work I could not do at 16, and the
+reason the idea had to wait forty years. See
 [Forty Years Later](#forty-years-later-the-1986-vision-in-z80) below for the
 program, the disc images, the source, and how it was built.
 
