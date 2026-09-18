@@ -8,7 +8,11 @@ The World's First (?) Tablature Composer Software - written in 1986 on an Amstra
 **Forty years later, the original vision of Tab Composer CPC has been
 realized.** The program I wanted to write in 1986 - in Z80 assembler, fast,
 with MIDI - now exists. I didn't have the knowledge to pull that off as a
-16 year old; Claude wrote it, and I directed and tested it. See
+16 year old; Claude wrote it, and I directed and tested it.
+
+Best of all, **you can now watch the tablature scroll past as the music
+plays** - which is what I wanted the program for in the first place, back
+when I was using it to help me through my guitar lessons. See
 [Forty Years Later](#forty-years-later-the-1986-vision-in-z80) below for the
 program, the disc images, the source, and how it was built.
 
@@ -305,16 +309,36 @@ the program I had in mind in 1986 exists.
 
 Everything the 1986 program did, minus two things I deliberately dropped -
 cassette support and the noise channels - and with the things BASIC could
-not do:
+not do.
+
+**The biggest change is one I had wanted from the very beginning: you can
+now watch the music while it plays.** A marker moves along the sheet
+position by position, the page turns by itself when the music leaves it,
+and the panel shows what each voice is sounding at that moment. The 1986
+version played a song perfectly well - but the sheet just sat there while
+it did. You could hear the piece; you could not follow it.
+
+That difference is not a nicety, it is what the program was for. I wrote
+Tab Composer CPC in the first place to help me with my guitar lessons, and
+a tablature you can *watch* as it plays is exactly what a learner needs:
+you see which string and which fret is coming, you can slow it down with
+`<` and `>` until your fingers keep up, and you play along. It turns the
+program from something that writes music down into something that teaches
+it - which is what I had in mind at 16, and could not build then.
+
+It is also the single hardest thing in the port, and the reason so much of
+the work below went into screen speed. Following the music means redrawing
+while the music runs, and a page turn that takes a second and a half is not
+following anything. It had to come down to 0.093 s, inside the 0.24 s a
+position lasts, before the idea worked at all.
+
+And the rest:
 
 - **You hear the note you are choosing.** The 1986 version played
   `SOUND 130,100,10,15` while you picked a fret: one fixed click, the same
   pitch whichever fret you were on. Now the fret you are looking at is the
-  note you hear, on the AY or over MIDI.
-- **The display follows the music.** A marker moves along the sheet as it
-  plays, the page turns by itself when the music leaves it, and the panel
-  shows what each voice is sounding, where you are and how long it has been
-  running.
+  note you hear, on the AY or over MIDI - which is the other half of using
+  this to learn a piece.
 - **MIDI OUT**, through the BluePillCPC Ultimate MIDI Card, with a switch
   for AY, MIDI, or both - and a General MIDI instrument you can change
   while it plays.
