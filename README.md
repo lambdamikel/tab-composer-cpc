@@ -5,6 +5,16 @@ The World's First (?) Tablature Composer Software - written in 1986 on an Amstra
 
 ### 18-9-2026
 
+**New YouTube video: [CPC Tab Composer 2.0, the Z80 version, on a real CPC
+464](https://youtu.be/xJNXdqg9Txs)** - the new version running on my
+portable 464, with the Ultimate MIDI Card on the expansion port: a song on
+the sheet, the tablature scrolling past as it plays, and the card doing the
+sound.
+
+[![CPC Tab Composer 2.0 running on the portable CPC 464](pics/video-tabcomp.jpg)](https://youtu.be/xJNXdqg9Txs)
+
+### 18-9-2026
+
 **Forty years later, the original vision of Tab Composer CPC has been
 realized.** The program I wanted to write in 1986 - in Z80 assembler, fast,
 with MIDI - now exists. I didn't have the knowledge to pull that off as a
