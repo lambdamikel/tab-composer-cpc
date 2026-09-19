@@ -55,6 +55,10 @@ doentry:
     or a
     jr z,ent_fresh
     ld (entryvoice),a
+    ld (bvoice),a               ; delnote clears the bar through bvoice, and
+                                ; a stale one blanks another voice's row -
+                                ; which is how editing one note of a chord
+                                ; made a different note's bar disappear
     ld a,(hl)                   ; its fret is where the choosing starts
     cp #FF
     jr nz,ent_ed1
